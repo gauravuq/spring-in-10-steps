@@ -1,4 +1,4 @@
-package com.gaurav.spring.basics.springin10steps;
+package com.gaurav.spring.basics.springin10steps.basic;
 
 public interface SortAlgorithm {
 

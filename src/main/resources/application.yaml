@@ -1,4 +1,4 @@
 logging:
   level:
     #root: info
-    org.springframework: debug  # needed to see core spring framework's debug logs of bean creation and what not.
+    org.springframework: info  # needed to see core spring framework's debug logs of bean creation and what not.
