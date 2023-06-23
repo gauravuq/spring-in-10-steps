@@ -1,7 +1,6 @@
 package com.gaurav.spring.basics.springin10steps.basic;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,13 +43,5 @@ public class BinarySearchImpl {
     // Search the array
     // Return the result
 
-    @PostConstruct
-    public void postConstruct(){
-      log.info("PostConstruct called in {}", BinarySearchImpl.class.getName());
-    }
 
-    @PreDestroy
-    public void preDestroy(){
-        log.info("PreDestroy called in {}", BinarySearchImpl.class.getName());
-    }
 }
