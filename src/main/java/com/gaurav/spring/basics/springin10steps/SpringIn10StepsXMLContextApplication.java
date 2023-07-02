@@ -8,18 +8,34 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.type.filter.AnnotationTypeFilter;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@ComponentScan
+import java.lang.annotation.Annotation;
+import java.util.Arrays;
+
+
 // the above annotation automatically searches the package and the sub-packages from the relevant position of this class file.
 public class SpringIn10StepsXMLContextApplication {
 
     private static Logger log = LoggerFactory.getLogger(SpringIn10StepsXMLContextApplication.class);
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml")) {
+
+            // To see what beans have been loaded in the contexts
+            Arrays.asList(applicationContext.getBeanDefinitionNames()).forEach(bean->log.info("Custom-Beans ->{}",bean));
+
+            //
+            Arrays.asList(applicationContext.getEnvironment()).forEach(bean->log.info("Environment Variables ->{}",bean));
+
+            //
+            log.info("Number of threads available from machine : {}", Runtime.getRuntime().availableProcessors());
+
+            // Sample bean loaded through xml context
             XmlPersonDAO xmlPersonDAO = applicationContext.getBean(XmlPersonDAO.class);
             log.info(xmlPersonDAO.toString());
             log.info(xmlPersonDAO.getXmlJdbcConnection().toString());
+
         }
     }
 }
